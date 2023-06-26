@@ -1,0 +1,113 @@
+/*********** STYLE GUIDE **********/
+:root {
+  /************ COLORS ************/
+  --orange: hsl(25, 97%, 53%);
+  --pure-white: hsl(0, 0%, 100%);
+  --mediumGrey: hsl(217, 12%, 54%);
+  --darkBlue: hsl(213, 19%, 18%);
+  --veryDarkBlue: hsl(218, 11%, 8%);
+  --black-gradient: radial-gradient(
+    98.96% 98.96% at 50% 0%,
+    #232a34 0%,
+    #181e27 100%
+  );
+  --light-grey: hsl(216, 12%, 63%);
+
+  /********* FONT FAMILY **********/
+  --overpass: "Overpass", sans-serif;
+
+  /********* FONT WEIGHTS *********/
+  --fw400: 400;
+  --fw700: 700;
+}
+
+/************* GENERAL ************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  height: 100%;
+  font-size: 62.5%;
+  font-family: var(--overpass);
+  background: var(--veryDarkBlue);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/******** RATING CONTAINER ********/
+.rating-container {
+  max-width: 32.7rem;
+  max-height: 36rem;
+  border-radius: 1.5rem;
+  background: var(--black-gradient);
+  padding: 2.4rem 2.4rem 3.2rem;
+}
+
+.star-icon-container {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--darkBlue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.6rem;
+}
+
+.header-main {
+  color: var(--pure-white);
+  font-size: 2.4rem;
+  font-weight: var(--fw700);
+  margin-bottom: 1rem;
+}
+
+.paragraph-text {
+  color: var(--light-grey);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.rating-numbers-container {
+  display: flex;
+  gap: 1.8rem;
+  margin-bottom: 2.4rem;
+}
+
+.number {
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+  background: var(--darkBlue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--mediumGrey);
+  font-size: 1.4rem;
+  font-weight: var(--fw700);
+  line-height: 2.4rem;
+  letter-spacing: 0.175px;
+}
+
+.submit-btn {
+  display: block;
+  border: none;
+  border-radius: 2.25rem;
+  background: var(--orange);
+  max-width: 27.9rem;
+  padding: 1.2rem 10.8rem;
+  color: var(--pure-white);
+  font-size: 1.4rem;
+  font-family: var(--overpass);
+  font-weight: var(--fw700);
+  letter-spacing: 1.867px;
+}
