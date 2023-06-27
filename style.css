@@ -110,4 +110,76 @@ main {
   font-family: var(--overpass);
   font-weight: var(--fw700);
   letter-spacing: 1.867px;
+  transition: all 0.3s;
+}
+
+/********** HOVER STATES **********/
+/* .number:is(:hover, :focus) {
+  cursor: pointer;
+  background: var(--mediumGrey);
+  color: var(--pure-white);
+} */
+
+.number_hover:is(:hover, :focus) {
+  cursor: pointer;
+  background: var(--mediumGrey);
+  color: var(--pure-white);
+}
+
+.submit-btn:is(:hover, :focus) {
+  cursor: pointer;
+  background: var(--pure-white);
+  color: var(--orange);
+}
+
+/******* 1440px MEDIA QUERY *******/
+@media (min-width: 90em) {
+  /******* RATING CONTAINER *******/
+  .rating-container {
+    max-width: 41.2rem;
+    max-height: 41.6rem;
+    border-radius: 3rem;
+    padding: 3.2rem 3.9rem 3.2rem 3.2rem;
+  }
+
+  .star-icon-container {
+    width: 4.8rem;
+    height: 4.8rem;
+    margin-bottom: 3rem;
+  }
+
+  .header-main {
+    font-size: 2.8rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .paragraph-text {
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+  }
+
+  .rating-numbers-container {
+    gap: 2.15rem;
+    margin-bottom: 3.2rem;
+  }
+
+  .number {
+    width: 5.1rem;
+    height: 5.1rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.2px;
+  }
+
+  .submit-btn {
+    max-width: 34.1rem;
+    padding: 1.1rem 13.8rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+  }
+}
+
+/* CLICKED CLASS */
+.clicked {
+  background: var(--orange);
+  color: var(--pure-white);
 }
