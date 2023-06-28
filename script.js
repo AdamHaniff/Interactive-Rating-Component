@@ -3,17 +3,39 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-// when a number is clicked, we want that number to have an orange background.
-// we will use an event listener for this - maybe use event propagation on the parent container so that we dont have to add a function on each individual element.
-// if an element is already clicked and we click another one, we need to reset to default state and have that new element clicked
-
+// VARIABLES
 const ratingNumbersContainer = document.querySelector(
   ".rating-numbers-container"
 );
+let selectedRating = null;
 
-ratingNumbersContainer.addEventListener("click", function (e) {
-  const number = e.target.closest(".number");
-  console.log(number);
-  number.classList.add("clicked");
-  number.classList.remove("number_hover");
-});
+// FUNCTIONS
+const addHoveredClass = function (e) {
+  const hoveredRating = e.target.closest(".rating-number");
+  if (!hoveredRating) return;
+  hoveredRating.classList.add("hovered");
+};
+
+const removeHoveredClass = function (e) {
+  const unhoveredRating = e.target.closest(".rating-number");
+  if (!unhoveredRating) return;
+  unhoveredRating.classList.remove("hovered");
+};
+
+const handleClickedEvent = function (e) {
+  const clickedRating = e.target.closest(".rating-number");
+  if (!clickedRating) return;
+  // If the same element is selected then deselected
+  if (clickedRating.classList.contains("clicked")) {
+    clickedRating.classList.remove("clicked");
+    clickedRating.classList.add("hovered");
+  } else {
+    clickedRating.classList.add("clicked");
+    clickedRating.classList.remove("hovered");
+  }
+};
+
+// EVENT LISTENERS
+ratingNumbersContainer.addEventListener("mouseover", addHoveredClass);
+ratingNumbersContainer.addEventListener("mouseout", removeHoveredClass);
+ratingNumbersContainer.addEventListener("click", handleClickedEvent);

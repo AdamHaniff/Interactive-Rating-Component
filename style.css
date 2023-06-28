@@ -83,7 +83,7 @@ main {
   margin-bottom: 2.4rem;
 }
 
-.number {
+.rating-number {
   width: 4.2rem;
   height: 4.2rem;
   border-radius: 50%;
@@ -114,18 +114,6 @@ main {
 }
 
 /********** HOVER STATES **********/
-/* .number:is(:hover, :focus) {
-  cursor: pointer;
-  background: var(--mediumGrey);
-  color: var(--pure-white);
-} */
-
-.number_hover:is(:hover, :focus) {
-  cursor: pointer;
-  background: var(--mediumGrey);
-  color: var(--pure-white);
-}
-
 .submit-btn:is(:hover, :focus) {
   cursor: pointer;
   background: var(--pure-white);
@@ -163,7 +151,7 @@ main {
     margin-bottom: 3.2rem;
   }
 
-  .number {
+  .rating-number {
     width: 5.1rem;
     height: 5.1rem;
     font-size: 1.6rem;
@@ -178,8 +166,15 @@ main {
   }
 }
 
-/* CLICKED CLASS */
+/* CLASSES USED WITH JAVASCRIPT */
+.hovered {
+  cursor: pointer;
+  background: var(--mediumGrey);
+  color: var(--pure-white);
+}
+
 .clicked {
+  cursor: pointer;
   background: var(--orange);
   color: var(--pure-white);
 }
