@@ -25,13 +25,20 @@ const removeHoveredClass = function (e) {
 const handleClickedEvent = function (e) {
   const clickedRating = e.target.closest(".rating-number");
   if (!clickedRating) return;
-  // If the same element is selected then deselected
-  if (clickedRating.classList.contains("clicked")) {
-    clickedRating.classList.remove("clicked");
-    clickedRating.classList.add("hovered");
-  } else {
+
+  if (!selectedRating) {
     clickedRating.classList.add("clicked");
-    clickedRating.classList.remove("hovered");
+    selectedRating = clickedRating;
+  } else {
+    if (clickedRating === selectedRating) {
+      clickedRating.classList.remove("clicked");
+      clickedRating.classList.add("hovered");
+      selectedRating = null;
+    } else {
+      selectedRating.classList.remove("clicked");
+      clickedRating.classList.add("clicked");
+      selectedRating = clickedRating;
+    }
   }
 };
 
