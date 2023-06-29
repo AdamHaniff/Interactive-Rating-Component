@@ -43,6 +43,19 @@ main {
   align-items: center;
 }
 
+/* CLASSES USED WITH JAVASCRIPT */
+.hovered {
+  cursor: pointer;
+  background: var(--mediumGrey);
+  color: var(--pure-white);
+}
+
+.clicked {
+  cursor: pointer;
+  background: var(--orange);
+  color: var(--pure-white);
+}
+
 /******** RATING CONTAINER ********/
 .rating-container {
   max-width: 32.7rem;
@@ -166,15 +179,88 @@ main {
   }
 }
 
-/* CLASSES USED WITH JAVASCRIPT */
-.hovered {
-  cursor: pointer;
-  background: var(--mediumGrey);
-  color: var(--pure-white);
+/******* THANK YOU CONTAINER ******/
+.thank-you-container {
+  max-width: 32.7rem;
+  max-height: 36rem;
+  border-radius: 1.5rem;
+  background: var(--black-gradient);
+  padding: 3.4rem 2.4rem 3.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.clicked {
-  cursor: pointer;
-  background: var(--orange);
+.illustration-container {
+  max-width: 14.4rem;
+  max-height: 9.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.illustration-img {
+  max-width: 100%;
+}
+
+.selection-text {
+  width: 16.8rem;
+  height: 3.2rem;
+  border-radius: 2.25rem;
+  background: var(--darkBlue);
+  color: var(--orange);
+  font-size: 1.4rem;
+  font-weight: var(--fw400);
+  line-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.9rem;
+}
+
+.sub-header-text {
   color: var(--pure-white);
+  font-size: 2.4rem;
+  font-weight: var(--fw700);
+  margin-bottom: 1rem;
+}
+
+.thank-you-paragraph {
+  color: var(--light-grey);
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: var(--fw400);
+  line-height: 2.2rem;
+}
+
+/******* 1440px MEDIA QUERY *******/
+@media (min-width: 90em) {
+  .thank-you-container {
+    max-width: 41.2rem;
+    max-height: 41.6rem;
+    border-radius: 3rem;
+    padding: 4.5rem 4rem 4.5rem 3.2rem;
+  }
+
+  .illustration-container {
+    max-width: 16.2rem;
+    max-height: 10.8rem;
+    margin-bottom: 3.2rem;
+  }
+
+  .selection-text {
+    width: 19.3rem;
+    height: 3.2rem;
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    margin-bottom: 3.6rem;
+  }
+
+  .sub-header-text {
+    font-size: 2.8rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .thank-you-paragraph {
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+  }
 }
