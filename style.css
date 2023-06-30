@@ -22,17 +22,20 @@
 }
 
 /************* GENERAL ************/
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
-html,
-body,
-main {
-  height: 100%;
+html {
   font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
   font-family: var(--overpass);
   background: var(--veryDarkBlue);
 }
@@ -43,25 +46,21 @@ main {
   align-items: center;
 }
 
-/* CLASSES USED WITH JAVASCRIPT */
-.hovered {
-  cursor: pointer;
-  background: var(--mediumGrey);
-  color: var(--pure-white);
+html,
+body,
+main {
+  height: 100%;
 }
 
-.clicked {
-  cursor: pointer;
-  background: var(--orange);
-  color: var(--pure-white);
-}
-
-/******** RATING CONTAINER ********/
-.rating-container {
+.container {
   max-width: 32.7rem;
   max-height: 36rem;
   border-radius: 1.5rem;
   background: var(--black-gradient);
+}
+
+/******** RATING COMPONENT ********/
+.rating-component {
   padding: 2.4rem 2.4rem 3.2rem;
 }
 
@@ -108,7 +107,7 @@ main {
   font-size: 1.4rem;
   font-weight: var(--fw700);
   line-height: 2.4rem;
-  letter-spacing: 0.175px;
+  letter-spacing: 0.0175rem;
 }
 
 .submit-btn {
@@ -122,7 +121,7 @@ main {
   font-size: 1.4rem;
   font-family: var(--overpass);
   font-weight: var(--fw700);
-  letter-spacing: 1.867px;
+  letter-spacing: 0.1867rem;
   transition: all 0.3s;
 }
 
@@ -135,11 +134,15 @@ main {
 
 /******* 1440px MEDIA QUERY *******/
 @media (min-width: 90em) {
-  /******* RATING CONTAINER *******/
-  .rating-container {
+  /*********** GENERAL ************/
+  .container {
     max-width: 41.2rem;
     max-height: 41.6rem;
     border-radius: 3rem;
+  }
+
+  /******* RATING COMPONENT *******/
+  .rating-component {
     padding: 3.2rem 3.9rem 3.2rem 3.2rem;
   }
 
@@ -168,7 +171,7 @@ main {
     width: 5.1rem;
     height: 5.1rem;
     font-size: 1.6rem;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.02rem;
   }
 
   .submit-btn {
@@ -179,12 +182,8 @@ main {
   }
 }
 
-/******* THANK YOU CONTAINER ******/
-.thank-you-container {
-  max-width: 32.7rem;
-  max-height: 36rem;
-  border-radius: 1.5rem;
-  background: var(--black-gradient);
+/******* THANK YOU COMPONENT ******/
+.thank-you-component {
   padding: 3.4rem 2.4rem 3.7rem;
   display: flex;
   flex-direction: column;
@@ -233,10 +232,7 @@ main {
 
 /******* 1440px MEDIA QUERY *******/
 @media (min-width: 90em) {
-  .thank-you-container {
-    max-width: 41.2rem;
-    max-height: 41.6rem;
-    border-radius: 3rem;
+  .thank-you-component {
     padding: 4.5rem 4rem 4.5rem 3.2rem;
   }
 
@@ -263,4 +259,21 @@ main {
     font-size: 1.5rem;
     line-height: 2.4rem;
   }
+}
+
+/* CLASSES USED WITH JAVASCRIPT */
+.hovered {
+  cursor: pointer;
+  background: var(--mediumGrey);
+  color: var(--pure-white);
+}
+
+.clicked {
+  cursor: pointer;
+  background: var(--orange);
+  color: var(--pure-white);
+}
+
+.hidden {
+  display: none;
 }
