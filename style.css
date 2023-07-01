@@ -126,7 +126,7 @@ main {
 }
 
 /********** HOVER STATES **********/
-.submit-btn:is(:hover, :focus) {
+.submit-btn:hover {
   cursor: pointer;
   background: var(--pure-white);
   color: var(--orange);

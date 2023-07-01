@@ -11,7 +11,7 @@ const submitBtn = document.querySelector(".submit-btn");
 const ratingComponent = document.querySelector(".rating-component");
 const thankYouComponent = document.querySelector(".thank-you-component");
 const selectionText = document.querySelector(".selection-text");
-let selectedRating = null;
+let selectedRating;
 
 // FUNCTIONS
 const addHoveredClass = function (e) {
@@ -24,6 +24,13 @@ const removeHoveredClass = function (e) {
   const unhoveredRating = e.target.closest(".rating-number");
   if (!unhoveredRating) return;
   unhoveredRating.classList.remove("hovered");
+};
+
+const setSelectedRatingText = function () {
+  let rating;
+  if (!selectedRating) return;
+  rating = selectedRating.textContent;
+  selectionText.textContent = `You selected ${rating} out of 5`;
 };
 
 const handleRatingClick = function (e) {
@@ -44,9 +51,11 @@ const handleRatingClick = function (e) {
       selectedRating = clickedRating;
     }
   }
+  setSelectedRatingText();
 };
 
 const handleSubmitClick = function () {
+  if (!selectedRating) return;
   ratingComponent.classList.add("hidden");
   thankYouComponent.classList.remove("hidden");
 };
