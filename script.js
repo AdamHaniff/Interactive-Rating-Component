@@ -11,6 +11,10 @@ const submitBtn = document.querySelector(".submit-btn");
 const ratingComponent = document.querySelector(".rating-component");
 const thankYouComponent = document.querySelector(".thank-you-component");
 const selectionText = document.querySelector(".selection-text");
+const ratingNumber = document.querySelectorAll(".rating-number");
+const orangeColor = getComputedStyle(document.documentElement).getPropertyValue(
+  "--orange"
+);
 let selectedRating;
 
 // FUNCTIONS
@@ -54,10 +58,26 @@ const handleRatingClick = function (e) {
   setSelectedRatingText();
 };
 
-const handleSubmitClick = function () {
-  if (!selectedRating) return;
+const setBorderStyle = function (elements, borderValue) {
+  elements.forEach((el) => (el.style.border = borderValue));
+};
+
+const displayThankYouComponent = function () {
   ratingComponent.classList.add("hidden");
   thankYouComponent.classList.remove("hidden");
+};
+
+const handleSubmitClick = function () {
+  if (!selectedRating) {
+    this.blur();
+    setBorderStyle(ratingNumber, `1px solid ${orangeColor}`);
+    setTimeout(() => {
+      alert("You need to select a rating before submitting");
+      setBorderStyle(ratingNumber, "none");
+    }, 20);
+    return;
+  }
+  displayThankYouComponent();
 };
 
 // EVENT LISTENERS

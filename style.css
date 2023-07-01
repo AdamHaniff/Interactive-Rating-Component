@@ -126,10 +126,11 @@ main {
 }
 
 /********** HOVER STATES **********/
-.submit-btn:hover {
+.submit-btn:is(:hover, :focus) {
   cursor: pointer;
   background: var(--pure-white);
   color: var(--orange);
+  outline: none;
 }
 
 /******* 1440px MEDIA QUERY *******/
