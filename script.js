@@ -15,47 +15,14 @@ const ratingNumber = document.querySelectorAll(".rating-number");
 const orangeColor = getComputedStyle(document.documentElement).getPropertyValue(
   "--orange"
 );
-let selectedRating;
+let selectedRating = null;
 
-// FUNCTIONS
-const addHoveredClass = function (e) {
-  const hoveredRating = e.target.closest(".rating-number");
-  if (!hoveredRating) return;
-  hoveredRating.classList.add("hovered");
-};
-
-const removeHoveredClass = function (e) {
-  const unhoveredRating = e.target.closest(".rating-number");
-  if (!unhoveredRating) return;
-  unhoveredRating.classList.remove("hovered");
-};
-
+// HELPER FUNCTIONS
 const setSelectedRatingText = function () {
   let rating;
   if (!selectedRating) return;
   rating = selectedRating.textContent;
   selectionText.textContent = `You selected ${rating} out of 5`;
-};
-
-const handleRatingClick = function (e) {
-  const clickedRating = e.target.closest(".rating-number");
-  if (!clickedRating) return;
-
-  if (!selectedRating) {
-    clickedRating.classList.add("clicked");
-    selectedRating = clickedRating;
-  } else {
-    if (clickedRating === selectedRating) {
-      clickedRating.classList.remove("clicked");
-      clickedRating.classList.add("hovered");
-      selectedRating = null;
-    } else {
-      selectedRating.classList.remove("clicked");
-      clickedRating.classList.add("clicked");
-      selectedRating = clickedRating;
-    }
-  }
-  setSelectedRatingText();
 };
 
 const setBorderStyle = function (elements, borderValue) {
@@ -67,14 +34,60 @@ const displayThankYouComponent = function () {
   thankYouComponent.classList.remove("hidden");
 };
 
+const showNoRating = function () {
+  setTimeout(() => {
+    alert("You need to select a rating before submitting");
+    setBorderStyle(ratingNumber, "none");
+  }, 20);
+};
+
+const addClass = function (className, element) {
+  element.classList.add(className);
+};
+
+const removeClass = function (className, element) {
+  element.classList.remove(className);
+};
+
+// EVENT LISTENER CALLBACK FUNCTIONS
+const addHoveredClass = function (e) {
+  const hoveredRatingElement = e.target.closest(".rating-number");
+  if (!hoveredRatingElement) return;
+  hoveredRatingElement.classList.add("hovered");
+};
+
+const removeHoveredClass = function (e) {
+  const unhoveredRatingElement = e.target.closest(".rating-number");
+  if (!unhoveredRatingElement) return;
+  unhoveredRatingElement.classList.remove("hovered");
+};
+
+const handleRatingClick = function (e) {
+  const clickedRating = e.target.closest(".rating-number");
+  if (!clickedRating) return;
+
+  if (!selectedRating) {
+    addClass("clicked", clickedRating);
+    selectedRating = clickedRating;
+  } else {
+    if (clickedRating === selectedRating) {
+      removeClass("clicked", clickedRating);
+      addClass("hovered", clickedRating);
+      selectedRating = null;
+    } else {
+      removeClass("clicked", selectedRating);
+      addClass("clicked", clickedRating);
+      selectedRating = clickedRating;
+    }
+  }
+  setSelectedRatingText();
+};
+
 const handleSubmitClick = function () {
   if (!selectedRating) {
     this.blur();
     setBorderStyle(ratingNumber, `1px solid ${orangeColor}`);
-    setTimeout(() => {
-      alert("You need to select a rating before submitting");
-      setBorderStyle(ratingNumber, "none");
-    }, 20);
+    showNoRating();
     return;
   }
   displayThankYouComponent();
