@@ -1,5 +1,4 @@
-"use strict";
-
+import { setBorderStyle, addClass, removeClass } from "./helpers.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
@@ -17,7 +16,7 @@ const orangeColor = getComputedStyle(document.documentElement).getPropertyValue(
 );
 let selectedRating = null;
 
-// HELPER FUNCTIONS
+// FUNCTIONS
 const setSelectedRatingText = function () {
   let rating;
   if (!selectedRating) return;
@@ -25,41 +24,29 @@ const setSelectedRatingText = function () {
   selectionText.textContent = `You selected ${rating} out of 5`;
 };
 
-const setBorderStyle = function (elements, borderValue) {
-  elements.forEach((el) => (el.style.border = borderValue));
-};
-
 const displayThankYouComponent = function () {
-  ratingComponent.classList.add("hidden");
-  thankYouComponent.classList.remove("hidden");
+  addClass("hidden", ratingComponent);
+  removeClass("hidden", thankYouComponent);
 };
 
-const showNoRating = function () {
+const displayNoRating = function () {
   setTimeout(() => {
     alert("You need to select a rating before submitting");
-    setBorderStyle(ratingNumber, "none");
+    setBorderStyle("none", ratingNumber);
   }, 20);
-};
-
-const addClass = function (className, element) {
-  element.classList.add(className);
-};
-
-const removeClass = function (className, element) {
-  element.classList.remove(className);
 };
 
 // EVENT LISTENER CALLBACK FUNCTIONS
 const addHoveredClass = function (e) {
   const hoveredRatingElement = e.target.closest(".rating-number");
   if (!hoveredRatingElement) return;
-  hoveredRatingElement.classList.add("hovered");
+  addClass("hovered", hoveredRatingElement);
 };
 
 const removeHoveredClass = function (e) {
   const unhoveredRatingElement = e.target.closest(".rating-number");
   if (!unhoveredRatingElement) return;
-  unhoveredRatingElement.classList.remove("hovered");
+  removeClass("hovered", unhoveredRatingElement);
 };
 
 const handleRatingClick = function (e) {
@@ -71,8 +58,8 @@ const handleRatingClick = function (e) {
     selectedRating = clickedRating;
   } else {
     if (clickedRating === selectedRating) {
+      removeClass("hovered", clickedRating);
       removeClass("clicked", clickedRating);
-      addClass("hovered", clickedRating);
       selectedRating = null;
     } else {
       removeClass("clicked", selectedRating);
@@ -86,8 +73,8 @@ const handleRatingClick = function (e) {
 const handleSubmitClick = function () {
   if (!selectedRating) {
     this.blur();
-    setBorderStyle(ratingNumber, `1px solid ${orangeColor}`);
-    showNoRating();
+    setBorderStyle(`1px solid ${orangeColor}`, ratingNumber);
+    displayNoRating();
     return;
   }
   displayThankYouComponent();

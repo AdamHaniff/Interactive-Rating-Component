@@ -96,6 +96,7 @@ main {
 }
 
 .rating-number {
+  cursor: pointer;
   width: 4.2rem;
   height: 4.2rem;
   border-radius: 50%;
@@ -123,14 +124,6 @@ main {
   font-weight: var(--fw700);
   letter-spacing: 0.1867rem;
   transition: all 0.3s;
-}
-
-/********** HOVER STATES **********/
-.submit-btn:is(:hover, :focus) {
-  cursor: pointer;
-  background: var(--pure-white);
-  color: var(--orange);
-  outline: none;
 }
 
 /******* 1440px MEDIA QUERY *******/
@@ -180,6 +173,14 @@ main {
     padding: 1.1rem 13.8rem;
     font-size: 1.5rem;
     letter-spacing: 0.2rem;
+  }
+
+  /********** HOVER STATE **********/
+  .submit-btn:is(:hover, :focus) {
+    cursor: pointer;
+    background: var(--pure-white);
+    color: var(--orange);
+    outline: none;
   }
 }
 
@@ -264,13 +265,11 @@ main {
 
 /* CLASSES USED WITH JAVASCRIPT */
 .hovered {
-  cursor: pointer;
   background: var(--mediumGrey);
   color: var(--pure-white);
 }
 
 .clicked {
-  cursor: pointer;
   background: var(--orange);
   color: var(--pure-white);
 }
